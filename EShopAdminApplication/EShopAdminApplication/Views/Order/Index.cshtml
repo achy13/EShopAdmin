@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<EShopAdminApplication.Models.Order>
+
+    <h1>Order</h1>
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Customer Details</th>
+            <th>Number of prodycts</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+            @foreach (var item in Model)
+            {
+                var i = 1;
+                <tr>
+                    <td>@(i)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductInOrders.Count)
+                    </td>
+                    <td>
+                        <a class="btn btn-info" asp-action="Details" asp-route-productId="@item.Id">
+                            View Order
+                        </a>
+                    </td>
+                </tr>
+                i++;
+            }
+
+    </tbody>
+</table>
+
